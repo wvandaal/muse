@@ -1,6 +1,12 @@
 Muse::Application.routes.draw do
 
+  resources :users
+
   root to: 'static_pages#home'
+
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
 
   match '/how_it_works',    to: 'static_pages#how_it_works'
   match '/about',   to: 'static_pages#about'

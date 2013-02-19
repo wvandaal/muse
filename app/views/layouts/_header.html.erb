@@ -1,12 +1,39 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top">
+<!-- header class="navbar navbar-fixed-top navbar-inverse" -->
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to "muse", root_path, class: "brand" %>
+			<% if current_user %>
+				<%= link_to "muse", current_user, id: "logo" %>
+			<% else %>
+				<%= link_to "muse", root_path, id: "logo" %>
+			<% end %>
 			<nav>
+				<% if current_user %>
+				<ul class="nav pull-left">
+					<li class="menu_icon"><%= link_to current_user do %>
+						<%= image_tag('home.png') %>
+						<% end %>
+					</li>
+					<li class="menu_icon"><%= link_to '#' do %>
+						<%= image_tag('heart.png') %>
+						<% end %>
+					</li>
+					<li class="menu_icon"><%= link_to '#' do %>
+						<%= image_tag('star.png') %>
+						<% end %>
+					</li>
+				</ul>
+				<% end %>
 				<ul class="nav pull-right">
-					<li><%= link_to "Home",			root_path %></li>
-					<li><%= link_to "How It Works", how_it_works_path %></li>
-					<li><%= link_to "Sign In",		'#' %></li>
+					<% if current_user %>
+						<li><%= link_to "Home",	current_user %></li>
+						<li><%= link_to "Blogroll", '#' %></li>
+						<li><%= link_to "Sign out", signout_path %></li>
+					<% else %>
+						<li><%= link_to "Home",	root_path %></li>
+						<li><%= link_to "Blogroll", '#' %></li>
+						<li><%= link_to "Sign In", "auth/facebook" %></li>
+					<% end %>
 				</ul>
 			</nav>
 		</div>

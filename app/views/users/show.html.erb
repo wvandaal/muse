@@ -1,0 +1,22 @@
+<% provide(:title, @user.name) %>
+<div class="container">
+	<div class="row-fluid">
+		<aside class="span3">
+			<section>
+				<h1>
+					<%= image_tag(@user.img_url, alt: @user.name, class: "profile_pic") %>
+					<%= @user.name %>
+				</h1>
+			</section>
+			<h2>
+				Following
+			</h2>
+		</aside>
+		<div class="span9 feed">
+			<iframe width="95%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F69378326"></iframe>
+			<iframe width="95%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F75820437"></iframe>
+			<iframe width="95%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F61960849"></iframe>
+		</div>
+
+	</div>
+</div>
