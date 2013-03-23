@@ -1,0 +1,31 @@
+<div class="removeable">
+	<h3>Add a blog!</h3>
+		<p>
+			We have just a few guidelines that an audio blog must follow to be added to the listings. They are here to help everyone hear the greatest new and old music, so we take them seriously.
+		</p>
+	<h4>Music Blog Requirements</h4>
+		<ul>
+			<li>
+				Advocates responsible use of copyrighted material, includes buy links in the posts, does not post unauthorized works.
+			</li>
+			<li>
+				Regularly posts updates, generates discussion.
+			</li>
+			<li>
+				Has a working, valid RSS/Atom feed.
+			</li>
+			<li>
+				Has been around for over 3 months.
+			</li>
+		</ul>
+	<div class="row">
+		<div class="span4">
+			<%= form_for(@blog) do |f| %>
+				<h5>Blog URL</h5>
+				<%= f.url_field :url %>
+				<%= f.submit "Add This Blog!", class: "btn" %>
+			<% end %>
+		</div>
+	</div>
+</div>
+		

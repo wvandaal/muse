@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+
+  has_many :followings, foreign_key: "user_id", dependent: :destroy
+  has_many :blogs, through: :followings
+
+  recommends :blogs
+
   def self.from_omniauth(auth)  
   	where(auth.slice(:uid)).first_or_create.tap do |user|
   		user.uid = auth.uid
@@ -9,4 +15,5 @@ class User < ActiveRecord::Base
   		user.save!
   	end
   end
+
 end

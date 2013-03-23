@@ -1,0 +1,43 @@
+<% provide(:title, 'Blogroll') %>
+<h1 class="banner"><div class="container">Blogroll</div></h1>
+<div class="container">
+	<div class="accordion" id="blogroll">
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#blogroll" href="#AddNewBlog">
+				Add A New Blog
+			</a>
+		</div>
+		<div id="AddNewBlog" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<%= render 'form' %>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#blogroll" href="#OurBlogs">
+				Browse Our Blogs
+			</a>
+		</div>
+		<div id="OurBlogs" class="accordion-body collapse in">
+			<div class="accordion-inner">
+				<% @blogs.each do |array| %>
+					<ul class="blogs">
+						<% array.each do |site| %>
+							<li>
+								<%= link_to site do %>
+									<span></span>
+									<%= image_tag(site.favicon_url, size: "22x22") %>
+									<%= site.name %>
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+

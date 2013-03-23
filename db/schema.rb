@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205213539) do
+ActiveRecord::Schema.define(:version => 20130226233247) do
+
+  create_table "blogs", :force => true do |t|
+    t.string   "url"
+    t.string   "feed"
+    t.string   "name"
+    t.string   "favicon_url"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "uid"

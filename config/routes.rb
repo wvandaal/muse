@@ -1,6 +1,10 @@
 Muse::Application.routes.draw do
-
   resources :users
+  resources :blogs do
+    member do
+      post :follow, :unfollow
+    end
+  end
 
   root to: 'static_pages#home'
 
