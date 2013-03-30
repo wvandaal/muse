@@ -28,7 +28,7 @@
 							<li>
 								<%= link_to site do %>
 									<span></span>
-									<%= image_tag(site.favicon_url, size: "22x22") %>
+									<%= image_tag(site.favicon_url, alt: @blog.name, size: "22x22") %>
 									<%= site.name %>
 								<% end %>
 							</li>

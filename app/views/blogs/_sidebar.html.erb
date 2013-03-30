@@ -1,0 +1,39 @@
+<aside class="span3">
+	<div class="affix">
+	<section id="badge">
+		<h1>
+			<%= image_tag(@blog.favicon_url, alt: @blog.name, size: "22x22", class: "favicon") %>
+			<%= @blog.name %>
+		</h1>
+		<h3>WEBSITE<br> <%= link_to(@blog.url, @blog.url) %></h3>
+	</section>
+		<ul class="nav nav-pills">
+			<% if current_user.likes?(@blog) %>
+				<li class="red active">
+					<%= link_to(follow_blog_path(@blog), method: :post) do %>
+						Unfollow
+						<%= image_tag('error.png') %>
+					<% end %>
+			<% else %>
+				<li>
+					<%= link_to(follow_blog_path(@blog), method: :post, id: "green") do %>
+						Follow
+						<%= image_tag('plus.png') %>
+					<% end %>
+			<% end %>
+			</li>
+			<li>	
+				<%= link_to('#') do %>
+					<%= 'Follower'.pluralize(@blog.liked_by_count) %>
+					<div class="letter-icon"><%= @blog.liked_by_count %></div>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to('#') do %>
+					<%= 'Post'.pluralize(0) %>
+					<div class="letter-icon">0<%#= <!--@blog.liked_by_count %></div>
+				<% end %>
+			</li>
+		</ul>
+	</div>
+</aside>

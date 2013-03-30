@@ -1,3 +1,30 @@
-<h1>Blogs#show</h1>
-<p>Find me in app/views/blogs/show.html.erb</p>
-<%= link_to "Follow", follow_blog_path(@blog), method: :post %>
+<% provide(:title, @blog.name) %>
+<script type="text/javascript">
+	//set here the swf folder
+	soundManager.url = '/swf/';
+	//need to be flash player 9
+	soundManager.flashVersion = 9;
+	//prefer HTML5 audio rather than flash
+	soundManager.useHTML5Audio = true;
+	//no debugging
+	soundManager.debugMode = false;
+	$(document).ready(function(){
+	  $('#fap').fullwidthAudioPlayer({opened: false});
+	});
+</script>
+<div class="container inner">
+	<div class="row-fluid">
+		<%= render 'sidebar' %>
+		<div class="feed span9">
+			<span class="header">Posts from <%=@blog.name%></span>
+			<div id="fap">
+				<% @songs.each do |song| %>
+					<%= link_to '', song.url  %>
+				<% end %>
+			</div>
+			<% @songs.each do |song| %>
+				<%= render 'player', song: song %>
+			<% end %>
+		</div>
+	</div>
+</div>

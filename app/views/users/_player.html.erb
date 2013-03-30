@@ -1,0 +1,31 @@
+<div class="player span12">
+	<div class="border">
+	<div class="album_art">
+		<%= link_to(song.url, class: "fap-single-track") do %>
+			<%= image_tag(song.icon_url, size: '98x98') %>
+			<span><%= image_tag('play-black.png', size: '60x60') %></span>
+		<% end %>
+	</div>
+	<div class="metadata">
+		<h1><%= song.title %></h1>
+		<h2><%= song.artist %></h2>
+		<span><%= truncate(strip_tags("<p>Woooooah. My dude Chris G. sent this my way last week to give it a listen just hours after he had made it and I was astonished. I just realized today that he has unleashed the beast to the public so here it is. Manila Killa claimed he stepped out of his comfort zone for this one but wow is it a gem. He&#8217;s EQed the vocals to compliment the piano beautifully, thrown in some subtle strings, and finally he&#8217;s brought in some trappy drums. MK closes the track with those wonderful strings which just rounds it off really well. The original Bastille is  a classic, however Manila Killa just made this tooo soothing. Head over to his page, and give him a Like to grab a <a title=\"download\" href=\"https://www.facebook.com/manilakilla/app_220150904689418\" target=\"_blank\">free download</a>.</p>\n"), :length => 250, omission: '...')%>
+		</span>
+	</div>
+	<ul class="nav nav-tabs nav-stacked ratings">
+		<li><%= link_to('#') do %>
+				<%= image_tag('thumbs_up.png', size: '22x22') %>
+			<% end %>
+		</li>
+		<li><%= link_to('#') do %>
+				<%= image_tag('heart-white.png', size: '22x22') %>
+			<% end %>
+		</li>
+		<li><%= link_to('#') do %>
+				<%= image_tag('thumbs_down.png', size: '22x22') %>
+			<% end %>
+		</li>
+	</ul>
+	<div class="stats"><%= image_tag('heart-white.png', size: '10x10') %> <%=song.times_favorited%> &#160|&#160 <%=image_tag('thumbs_up.png', size: '10x10')%> <%=song.liked_by_count%> &#160|&#160 <%=image_tag('thumbs_down.png', size: '10x10')%> <%=song.disliked_by_count%></div>
+</div>
+</div>

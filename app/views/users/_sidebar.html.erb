@@ -1,0 +1,16 @@
+<aside class="span3 user-sidebar">
+	<ul class="nav nav-list affix">
+		<li class="nav-header"><%=@user.name%></li>
+		<li><%= image_tag(@user.img_url.gsub(/square/, "large"), alt: @user.name, width: "100%") %></li>
+		<li class="nav-header">FOLLOWING</li>
+		<% @user.liked_blogs.each do |site| %>
+			<li>
+				<%= link_to site do %>
+					<span></span>
+					<%= image_tag(site.favicon_url, alt: site.name, size: "22x22") %>
+					<%= site.name %>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+</aside>

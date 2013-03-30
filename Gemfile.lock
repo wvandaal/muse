@@ -74,6 +74,12 @@ GEM
     hashie (1.2.0)
     hike (1.2.1)
     hooks (0.2.2)
+    httmultiparty (0.3.8)
+      httparty (>= 0.7.3)
+      multipart-post
+    httparty (0.10.2)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
@@ -94,6 +100,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.5.0)
+    multi_xml (0.5.3)
     multipart-post (1.1.5)
     nokogiri (1.5.6)
     oauth2 (0.8.0)
@@ -178,6 +185,10 @@ GEM
       redis-namespace
     sidekiq-middleware (0.0.6)
       sidekiq
+    soundcloud (0.3.1)
+      hashie
+      httmultiparty (>= 0.3)
+      httparty (>= 0.7.3)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -217,5 +228,6 @@ DEPENDENCIES
   sass-rails (= 3.2.5)
   sidekiq (= 2.8.0)
   sidekiq-middleware (= 0.0.6)
+  soundcloud (= 0.3.1)
   sqlite3 (= 1.3.5)
   uglifier (= 1.0.3)

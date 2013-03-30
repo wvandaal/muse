@@ -8,6 +8,7 @@ gem 'feedzirra'
 gem 'recommendable', '2.1.0.1'
 gem 'sidekiq', '2.8.0'
 gem 'sidekiq-middleware' , '0.0.6'
+gem 'soundcloud', '0.3.1'
 
 
 # Bundle edge Rails instead:

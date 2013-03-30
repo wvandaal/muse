@@ -15,6 +15,7 @@ class BlogsController < ApplicationController
 
   def show
   	@blog = Blog.find(params[:id])
+    @songs = Song.all
   end
 
   def follow

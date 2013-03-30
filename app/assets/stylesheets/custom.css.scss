@@ -31,6 +31,9 @@ textarea {
 	resize: vertical;
 }
 
+.inner {
+  padding-top: 15px;
+}
 
 .center {	/* associates 'center' class with the property 'text-align: center'; any element (such as a div) with the class 'center' will be associated with these properties */
 	text-align: center;
@@ -222,7 +225,7 @@ p {
 	font-weight: bold;
 	line-height: 1;
 	&:hover {	/* this is another example of nesting in SCSS. In order to reference the parent element (#logo), we must use the character & before the 'hover' attribute */
-		color: red;
+		color: #fb4e4e;
 		text-decoration: none;
 	}
 }
@@ -273,18 +276,30 @@ input, textarea, select, .uneditable-input {
 /* musefeed */
 
 .feed {
-    border-left: 1px solid $grayMediumLight;
+    margin-top: 5px;
+    float: right;
     iframe {
-      float: right;
       padding-top: 15px;
       margin-right: 10px;
     }
 }
 
+span.header{
+  width: 96%;
+  padding: 3px 15px;
+  background-color: #5D8AA8;
+  display: inline-block;
+  margin-left: 4px;
+  color: white;
+  font-weight: bold;
+  text-align: right;
+}
+
 /* accordion */
 .accordion-heading {
-    background: red;
+    background: #fb4e4e;
     position: relative;
+    border-radius: 3px;
 }
 
 .accordion-heading a {
@@ -347,26 +362,74 @@ ul.blogs {
 
 .nav-pills li
   a {
+    height: 47px;
+    width: 47px;
     background-color: $grayLighter;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: .6em;
     color: $gray;
     &:hover {
       color: white;
-      background-color: red;
+      background-color: #fd5b5b;
+      div {
+        color: white;
+      }
     }
-  
+    div {
+      color: $gray;
+    }
 }
 
-.red .active a,
-.red .active a:hover {
-    background-color: red;
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+    background-color: #fb4e4e;
+}
 
+#badge {
+  margin-bottom: 1%;
+  width: 99%;
+}
+
+.letter-icon{
+  padding: 10px 15px;
+  font-size: 3em;
+  font-weight: bolder;
+  color: white;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#green {
+  background-color: #00c778;
+  color: white;
 }
 
 /* sidebar */
 
+.nav-list > .nav-header {
+  background-color: #5D8AA8;
+  color: white;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.user-sidebar {
+  ul {
+    li a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
 aside {
   section {
-    padding: 15px 0;
+    margin-top: 5px;
+    background-color: $grayLighter;
+    padding-bottom: 15px;
+    border-radius: 5px;
     border-top: 1px solid $grayLighter;
     &:first-child {
       border: 0;
@@ -392,10 +455,154 @@ aside {
       color: gray;
       text-transform: uppercase;
     }
+    h3 {
+      padding-left: 5px;
+      font-size: .85em;
+      font-weight: bold;
+      &:hover {
+        text-decoration: none;
+      }
+    }
 }
 
 .profile_pic {
   float: left;
-  padding-left: 2px;
-  padding-right: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.favicon {
+  margin-left: 5px;
+  border-radius: 3px;
+}
+
+/* song post */
+
+.metadata {
+  display: inline-block;
+ vertical-align: top;
+ width: 75%;
+  h1 {
+    font-size: 1.1em;
+  }
+  h2 {
+    font-size: .9em;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  span {
+    font-size: .9em;
+  }
+}
+
+.player {
+  display: block;
+  float: right;
+  border-radius: 5px;
+  div.border {
+    padding: 5px 0;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-color: $grayLighter;
+    border-radius: 5px;
+  }
+  &:hover{
+    background-color: $grayLighter;
+    .ratings{
+      visibility: visible;
+    }
+  }
+}
+
+.row-fluid [class*="span"] {
+  margin-left: .6%;
+}
+
+.stats{
+  float: right;
+  text-align: center;
+  background-color: #fd5b5b;
+  padding: 0 5px;
+  color: white;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: .7em;
+  width: 20%;
+  margin-left: 80%;
+}
+
+.play {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  float: left;
+  background-color: $grayLight;
+  width: 8%;
+  margin: 5px;
+  li {
+    a{
+      height: 84px;
+      background: url('play.png') no-repeat center;
+      &:hover{
+        background-color: $gray;
+      }
+    }
+  }
+}
+
+.album_art {
+  display: inline-block;
+  margin: 1% 1% 1% 1%;
+  img{
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+  }
+  a {
+    width: 98px;
+    height: 98px;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    float: left;
+    span {
+      border-radius: 4px;
+      position: absolute;
+      background-color: white;
+      left: 20%;
+      top: 20%;
+      filter:alpha(opacity=70);
+      -moz-opacity: 0.7;
+      -khtml-opacity: 0.7;
+      opacity: 0.7;
+      img {
+        border-style: none;
+      }
+      &:hover {
+          filter:alpha(opacity=90);
+          -moz-opacity:.9;
+          -khtml-opacity: .9;
+          opacity: .9;
+        
+      }
+    }
+  }
+}
+
+.ratings {
+  visibility: hidden;
+  margin-bottom: 0;
+  float: right;
+  li {
+    a {
+      height: 33%;      
+      background-color: $grayLight;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        background-color: $gray;
+      }
+    }
+  }
 }

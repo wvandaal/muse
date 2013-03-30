@@ -18,7 +18,7 @@ class Blog < ActiveRecord::Base
 
   	def has_working_url
   		url = URI.parse(self.format_urls)
- 		Net::HTTP.start(url.host, url.port) do |http|
+ 	  	Net::HTTP.start(url.host, url.port) do |http|
     		return http.head(url.request_uri).code == "200"
   		end
 	end
