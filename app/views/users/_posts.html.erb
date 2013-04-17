@@ -1,0 +1,11 @@
+<% if current_user.filters_enabled %>
+	<% @songs.each do |song| %>
+		<%= render 'player', song: song, post: song.most_recent_post, blog: Blog.find(song.most_recent_post.blog_id) %>
+	<% end %>
+<% else %>
+	<% @posts.each do |post| %>
+		<% post.songs.each do |song| %>
+			<%= render 'player', song: song, post: post, blog: Blog.find(post.blog_id) %>
+		<% end %>
+	<% end %>
+<% end %>

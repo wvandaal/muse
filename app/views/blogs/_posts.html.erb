@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+	<% post.songs.each do |song| %>
+		<%= render 'player', song: song, post: post %>
+	<% end %>
+<% end %>

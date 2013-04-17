@@ -1,0 +1,39 @@
+<div class="player span8">
+	<div class="border">
+	<div class="album_art">
+		<%= link_to(song.url, class: "fap-single-track", id: "play") do %>
+			<%= image_tag(song.icon_url, size: '98x98') %>
+			<span><%= image_tag('play-black.png', size: '60x60') %></span>
+		<% end %>
+	</div>
+	<div class="metadata">
+		<h1 id="static_title"><span class="label label-important genre" id="static_genre"><%= song.genre %></span><%= !song.genre.blank? ? " #{song.title}" : song.title  %></h1>
+		<h2 id="static_artist"><%= song.artist %></h2>
+		<span>
+			<span class="badge" id="static_badge">
+				<%= image_tag(blog.favicon_url, size: "18x18") %>
+				<%= link_to(blog.name, blog.url) %>
+			</span>
+			<%= raw(truncate(strip_tags(" #{post.content}"), :length => 250, :omission => "... #{link_to('[more]', post.url, id: 'static_excerpt')}"))%>
+		</span>
+	</div>
+	<ul class="nav nav-tabs nav-stacked ratings">
+		<li class="selected">
+			<%= link_to('#', class: "green", id: "static_like") do %>
+				<i class="icon-thumbs-up icon-large"></i>
+			<% end %>
+		</li>
+		<li class="selected">
+			<%= link_to('#', class: "red", id: "static_favorite") do %>
+				<i class="icon-heart icon-large"></i>
+			<% end %>
+		</li>
+		<li class="selected">
+			<%= link_to('#', class: "blue", id: "static_dislike") do %>
+				<i class="icon-thumbs-down icon-large"></i>
+			<% end %>
+		</li>
+	</ul>
+	<div class="stats" id="static_stats"><%= image_tag('heart-white.png', size: '10x10') %> 9 &#160|&#160 <%=image_tag('thumbs_up.png', size: '10x10')%> 20 &#160|&#160 <%=image_tag('thumbs_down.png', size: '10x10')%> 2</div>
+</div>
+</div>

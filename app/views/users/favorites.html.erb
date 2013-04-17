@@ -1,0 +1,33 @@
+<% provide(:title, "#{@user.name} Favorites") %>
+<script type="text/javascript">
+	//set here the swf folder
+	soundManager.url = '/swf/';
+	//need to be flash player 9
+	soundManager.flashVersion = 9;
+	//prefer HTML5 audio rather than flash
+	soundManager.useHTML5Audio = true;
+	//no debugging
+	soundManager.debugMode = false;
+	$(document).ready(function(){
+	  $('#fap').fullwidthAudioPlayer({opened: false});
+	});
+</script>
+<div class="container inner">
+	<div class="row-fluid">
+		<%= render 'sidebar' %>
+		<div class="span9">
+			<div id="feed">
+				<span class="header"><%="Your Favorites"%></span>
+				<div id="fap">
+					<% @songs.each do |song| %>
+						<%= link_to '', song.url  %>
+					<% end %>
+				</div>
+				<%= render 'songs' %>
+			</div>
+			<div class="span12" id="append_and_paginate">
+				<%= will_paginate @songs %>
+			</div>
+		</div>
+	</div>
+</div>

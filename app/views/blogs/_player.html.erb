@@ -7,22 +7,26 @@
 		<% end %>
 	</div>
 	<div class="metadata">
-		<h1><%= song.title %></h1>
+		<h1><span class="label label-important genre"><%= song.genre %></span><%= !song.genre.blank? ? " #{song.title}" : song.title  %></h1>
 		<h2><%= song.artist %></h2>
-		<span><%= truncate(strip_tags("<p>Woooooah. My dude Chris G. sent this my way last week to give it a listen just hours after he had made it and I was astonished. I just realized today that he has unleashed the beast to the public so here it is. Manila Killa claimed he stepped out of his comfort zone for this one but wow is it a gem. He&#8217;s EQed the vocals to compliment the piano beautifully, thrown in some subtle strings, and finally he&#8217;s brought in some trappy drums. MK closes the track with those wonderful strings which just rounds it off really well. The original Bastille is  a classic, however Manila Killa just made this tooo soothing. Head over to his page, and give him a Like to grab a <a title=\"download\" href=\"https://www.facebook.com/manilakilla/app_220150904689418\" target=\"_blank\">free download</a>.</p>\n"), :length => 250, omission: '...')%>
+		<span>
+			<%= raw(truncate(strip_tags(post.content), :length => 300, :omission => "... #{link_to('[more]', post.url)}"))%>
 		</span>
 	</div>
 	<ul class="nav nav-tabs nav-stacked ratings">
-		<li><%= link_to('#') do %>
-				<%= image_tag('thumbs_up.png', size: '22x22') %>
+		<li class=<%= current_user.likes?(song) ? "selected" : "unselected" %>>
+			<%= link_to(like_song_path(song), class: "green", method: :post) do %>
+				<i class="icon-thumbs-up icon-large"></i>
 			<% end %>
 		</li>
-		<li><%= link_to('#') do %>
-				<%= image_tag('heart-white.png', size: '22x22') %>
+		<li class=<%= current_user.bookmarks?(song) ? "selected" : "unselected" %>>
+			<%= link_to(favorite_song_path(song), class: "red", method: :post) do %>
+				<i class="icon-heart icon-large"></i>
 			<% end %>
 		</li>
-		<li><%= link_to('#') do %>
-				<%= image_tag('thumbs_down.png', size: '22x22') %>
+		<li class=<%= current_user.dislikes?(song) ? "selected" : "unselected" %>>
+			<%= link_to(dislike_song_path(song), class: "blue", method: :post) do %>
+				<i class="icon-thumbs-down icon-large"></i>
 			<% end %>
 		</li>
 	</ul>

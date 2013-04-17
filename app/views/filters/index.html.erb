@@ -1,0 +1,18 @@
+<% provide(:title, "Your Filters") %>
+<h1 class="banner"><div class="container">Filters</div></h1>
+<div class="container" id="inner">
+	<div class="well">
+		<h2>
+			<%= link_to new_filter_path, class: "badge background-blue badge-big pull-left" do %>
+				<i class="icon-plus-sign"></i> Create Filter
+			<% end %>
+			Customize Your Filters
+			<%= link_to toggle_filter_user_path(@user), class: @user.filters_enabled ? "badge badge-big background-green pull-right" : "badge badge-big background-red pull-right", method: :post do %>
+				<%= @user.filters_enabled ? " Filters Enabled" : " Filters Disabled"%>
+			<% end %>
+		</h2>
+		<% @filters.each do |filt| %>
+			<%= render 'filter', :filter => filt %> 
+		<% end %>
+	</div>
+</div>

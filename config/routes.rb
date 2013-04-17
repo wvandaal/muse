@@ -1,5 +1,13 @@
 Muse::Application.routes.draw do
-  resources :users
+
+  resources :filters
+  resources :users do
+    member do
+      get :favorites, as: 'favorites'
+      get :recommendations, as: 'recommended'
+      post :toggle_filter
+    end
+  end
   resources :blogs do
     member do
       post :follow
@@ -11,6 +19,10 @@ Muse::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
+
+  match 'songs/:id/like', to: 'songs#like', via: :post, as: 'like_song'
+  match 'songs/:id/dislike', to: 'songs#dislike', via: :post, as: 'dislike_song'
+  match 'songs/:id/favorite', to: 'songs#favorite', via: :post, as: 'favorite_song'
 
   match '/how_it_works',    to: 'static_pages#how_it_works'
   match '/about',   to: 'static_pages#about'

@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   def index
-  	@blogs = Blog.all.each_slice(3).to_a
+  	@blogs = Blog.order("name").each_slice(3).to_a
   	@blog = Blog.new
   end
 
@@ -15,7 +15,11 @@ class BlogsController < ApplicationController
 
   def show
   	@blog = Blog.find(params[:id])
-    @songs = Song.all
+    ids = @blog.posts.pluck(:id).uniq
+    @posts = Post.where(id: ids).order("post_date DESC").paginate(:page => params[:page], :per_page => 20)
+    if @posts.blank?
+      @blog.update
+    end
   end
 
   def follow

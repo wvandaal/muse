@@ -15,16 +15,21 @@
 <div class="container inner">
 	<div class="row-fluid">
 		<%= render 'sidebar' %>
-		<div class="feed span9">
-			<span class="header">Posts from <%=@blog.name%></span>
-			<div id="fap">
-				<% @songs.each do |song| %>
-					<%= link_to '', song.url  %>
-				<% end %>
+		<div class="span9">
+			<div id="feed">
+				<span class="header">Posts from <%=@blog.name%></span>
+				<div id="fap">
+					<% @posts.each do |post| %>
+						<% post.songs.each do |song| %>
+							<%= link_to '', song.url  %>
+						<% end %>
+					<% end %>
+				</div>
+				<%= render 'posts' %>
 			</div>
-			<% @songs.each do |song| %>
-				<%= render 'player', song: song %>
-			<% end %>
+			<div class="span12" id="append_and_paginate">
+				<%= will_paginate @posts %>
+			</div>
 		</div>
 	</div>
 </div>

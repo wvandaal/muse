@@ -2,6 +2,10 @@
 	<div class="container">
 		<h1>muse</h1>
 		<p>Bringing your favorite music together, <br>so you don't have to.</p>
-		<%= link_to "Sign in with Facebook", "auth/facebook", class: "btn btn-large btn-primary" %>
+		<% if current_user %>
+			<%= link_to "Go To Your Profile", current_user, class: "btn btn-large btn-primary" %>
+		<% else %>
+			<%= link_to "Sign in with Facebook", "auth/facebook", class: "btn btn-large btn-primary" %>
+		<% end %>
 	</div>
 </div>

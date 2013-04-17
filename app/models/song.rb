@@ -1,3 +1,8 @@
 class Song < ActiveRecord::Base
-  attr_accessible :artist, :genre, :icon_url, :plays, :times_favorited, :title, :track_id, :url
+  has_many :links
+  has_many :posts, through: :links, uniq: true
+
+  def most_recent_post
+  	return self.posts.order("post_date DESC").first
+  end
 end

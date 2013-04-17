@@ -1,0 +1,14 @@
+<div class="media filter">
+	<%= link_to edit_filter_path(filter), class: "pull-left disabled" do %>
+		<i class="media-object icon-cogs icon-3x"></i>
+	<% end %>
+	<div class="media-body">
+    	<h4 class="media-heading"><%= filter.name %><small class="pull-right"><span class="label"><%= filter.updated_at.strftime("Updated %b %d, %Y") %><%= filter.updated_at.in_time_zone("Eastern Time (US & Canada)").strftime(" at %I:%M%p") %></span></small></h4>
+   		<span class="label <%= filter.inclusive ? "background-green": "background-red" %>"><%= filter.inclusive ? "Include" : "Exclude" %></span> tracks whose 
+   		<% filter.attributes.each_pair do |name, value| %>
+   			<% unless (value.blank? || ["user_id", "id", "inclusive", "created_at", "updated_at", "name"].include?(name)) %>
+   				<span class="label label-info"> <%= "#{name.capitalize.tr('_', ' ')} is #{value}" %> </span>
+   			<% end %>
+   		<% end %>
+	</div>
+</div>

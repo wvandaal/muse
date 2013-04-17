@@ -1,8 +1,14 @@
 @import "bootstrap";
+@import "font-awesome";
 
 /* mixins, variables, etc. definitions */
 
 $grayMediumLight: #eaeaea;
+$blueGray: #5D8AA8;
+$blueLight: #0088cc;
+$mintGreen: #00c778;
+$red: #fd5b5b;
+$redBright: #fb4e4e;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -15,10 +21,31 @@ $grayMediumLight: #eaeaea;
 
 html {
 	overflow-y: scroll;
+  height: 100%;
 }
 
 body {
-	padding-top: 30px;
+	height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -60px;
+  > .container {
+    padding-top: 50px;
+  }
+}
+
+.container#inner{
+  padding-top: 0;
+}
+
+      /* Set the fixed height of the footer here */
+#push, #footer {
+  height: 60px;
 }
 
 /* @import "bootstrap-responsive"; */
@@ -188,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
 h1.banner {
 	font-size: 9em;
 	letter-spacing: 15px;
-	margin-bottom: 30px;
+	margin-top: 30px;
   padding: 20px;
 	text-align: left;
   background-color: $grayMediumLight;
@@ -219,13 +246,13 @@ p {
 	float: left;
 	margin-right: 10px;
 	font-size: 2.1em;
-	color: $grayDarker;
+	color: $gray;
 	letter-spacing: -4px;
 	padding-top: 4px;
 	font-weight: bold;
 	line-height: 1;
 	&:hover {	/* this is another example of nesting in SCSS. In order to reference the parent element (#logo), we must use the character & before the 'hover' attribute */
-		color: #fb4e4e;
+		color: $redBright;
 		text-decoration: none;
 	}
 }
@@ -239,8 +266,8 @@ p {
 /* footer */
 
 footer {
-	margin-top: 45px;
-	padding-top: 5px;
+  margin: 1% 0;
+  padding-top: 1%;
 	border-top: 1px solid $grayMediumLight;
 	color: $grayLight;
 	a{
@@ -275,29 +302,57 @@ input, textarea, select, .uneditable-input {
 
 /* musefeed */
 
-.feed {
+#feed {
     margin-top: 5px;
     float: right;
+    display: inline-block;
+    width: 100%;
     iframe {
       padding-top: 15px;
       margin-right: 10px;
     }
 }
 
+#append_and_paginate {
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+#append_more_results {
+  font-size: 2.2em;
+  width: 99.7%;
+  float: right;
+  padding: 9% 0;
+  min-height: 55px;
+}
+
+#loading {
+  font-size: 1.8em;
+  color: white;
+  display: none;
+  color: #333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
 span.header{
   width: 96%;
+  margin-top: 0px;
   padding: 3px 15px;
-  background-color: #5D8AA8;
+  background-color: $blueGray;
   display: inline-block;
   margin-left: 4px;
   color: white;
   font-weight: bold;
   text-align: right;
+  border-radius: 3px;
 }
 
 /* accordion */
 .accordion-heading {
-    background: #fb4e4e;
+    background: $redBright;
     position: relative;
     border-radius: 3px;
 }
@@ -327,7 +382,7 @@ ul.blogs {
         display: inline-block;
         width: 29%;
         vertical-align: bottom;
-        padding: 7px 2%;
+        padding: 15px 2%;
         -moz-border-radius: 5px;            
         border-radius: 5px;
         &:hover {
@@ -372,7 +427,7 @@ ul.blogs {
     color: $gray;
     &:hover {
       color: white;
-      background-color: #fd5b5b;
+      background-color: $red;
       div {
         color: white;
       }
@@ -382,37 +437,46 @@ ul.blogs {
     }
 }
 
-.nav-pills > .active > a, .nav-pills > .active > a:hover {
-    background-color: #fb4e4e;
+.nav-pills > .green > a, .nav-pills > .green > a:hover {
+  background-color: $mintGreen;
+  color: white;
+}
+
+.nav-pills > .blue > a, .nav-pills > .blue > a:hover {
+  background-color: $blueGray;
+  color: white;
 }
 
 #badge {
-  margin-bottom: 1%;
   width: 99%;
 }
 
 .letter-icon{
-  padding: 10px 15px;
+  width: 100%;
+  padding: 10px 0;
   font-size: 3em;
   font-weight: bolder;
   color: white;
-  text-align: left;
+  text-align: center;
   display: inline-block;
   vertical-align: top;
 }
 
-#green {
-  background-color: #00c778;
-  color: white;
-}
 
 /* sidebar */
 
 .nav-list > .nav-header {
-  background-color: #5D8AA8;
+  background-color: $blueGray;
   color: white;
   margin-bottom: 5px;
   margin-top: 5px;
+  border-radius: 3px;
+  a {
+    color: white;
+    &:hover {
+      color: black;
+    }
+  }
 }
 
 .user-sidebar {
@@ -485,6 +549,9 @@ aside {
  width: 75%;
   h1 {
     font-size: 1.1em;
+    span.genre {
+      font-size: .7em;
+    }
   }
   h2 {
     font-size: .9em;
@@ -493,7 +560,25 @@ aside {
   }
   span {
     font-size: .9em;
+    span.badge a {
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      padding-right: 2px;
+      img {
+        padding: 2px 2px;
+      }
+    }
+    a {
+      color: $grayDarker;
+      font-weight: bold;
+    }
   }
+}
+
+.metadata > span > span > a.hidden {
+  display: none;
 }
 
 .player {
@@ -513,6 +598,12 @@ aside {
       visibility: visible;
     }
   }
+  h3.badge-text {
+    font-weight: bold;
+    font-size: 1em;
+    display: inline;
+    padding-right: 2px;
+  }
 }
 
 .row-fluid [class*="span"] {
@@ -522,7 +613,7 @@ aside {
 .stats{
   float: right;
   text-align: center;
-  background-color: #fd5b5b;
+  background-color: $red;
   padding: 0 5px;
   color: white;
   border-radius: 3px;
@@ -557,7 +648,7 @@ aside {
     border-radius: 5px;
     border-color: white;
     border-style: solid;
-    border-width: 1px;
+    border-width: 3px;
   }
   a {
     width: 98px;
@@ -570,8 +661,8 @@ aside {
       border-radius: 4px;
       position: absolute;
       background-color: white;
-      left: 20%;
-      top: 20%;
+      left: 23%;
+      top: 23%;
       filter:alpha(opacity=70);
       -moz-opacity: 0.7;
       -khtml-opacity: 0.7;
@@ -591,18 +682,144 @@ aside {
 }
 
 .ratings {
+  padding-top: .5%;
   visibility: hidden;
   margin-bottom: 0;
   float: right;
   li {
     a {
+      padding-left: 0;
+      padding-right: 10px; 
       height: 33%;      
-      background-color: $grayLight;
-      color: white;
       text-decoration: none;
-      &:hover {
-        background-color: $gray;
-      }
     }
   }
+}
+
+.nav-tabs.nav-stacked.ratings {
+  > li a { border: none; }
+  > .selected { 
+    > a > i { visibility: visible; }
+    > .green { color: $mintGreen; }
+    > .red { color: $redBright; }
+    > .blue {color: $blueLight; }
+  }
+  > .unselected {
+    > a { color: $gray; }
+    &:hover {
+      > .green { color: $mintGreen; }
+      > .red { color: $redBright; }
+      > .blue { color: $blueLight; }
+    }
+  }
+}
+
+/* help */
+.help {
+  margin-top: 55px;
+  float: right;
+  position: fixed;
+  right: -35px;
+  padding-right: 40px;
+  &:hover {
+    right: -30px;
+  }
+  i {
+    color: $grayDarker;
+    opacity: .8;
+    text-decoration: none;
+    padding-left: 5px; 
+  }
+}
+
+.popover {
+  text-align: center;
+}
+
+p#sidebar_desc {
+  text-align: left;
+}
+
+#static_sidebar {
+  margin-right: 15px;
+}
+
+div.modal-footer {
+  .btn-primary {
+    float: left;
+  }
+}
+
+div.modal-header {
+  text-align: center;
+}
+
+div#tour {
+  width: 650px;
+}
+div.modal-body{
+  p {
+    text-align: center;
+  }
+  height: 550px;
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+/* filters */
+.media.filter {
+  &:nth-child(even) {
+    background-color: white;
+  }
+  a {
+    text-decoration: none;
+  }
+  margin-top: 0;
+  padding: 20px 10px;
+  border-radius: 5px;
+}
+
+.badge-big {
+  padding: 10px;
+  font-size: .65em; 
+  width: 14%;
+  letter-spacing: 0px;
+}
+
+.form-label {
+  font-size: 1em;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.form-header {
+  font-size: 1em;
+  padding: 5px;
+  text-align: center;
+  width: 98%;
+  margin: 5px 0;
+}
+
+.navbar .nav > li > a {
+  >i.green {
+    color: $mintGreen;
+  }
+  >i.red {
+    color: $redBright;
+  }
+}
+
+.disabled {
+  color: $grayLight;
+}
+.background-blue {
+  background-color: $blueGray;
+}
+.background-green {
+  background-color: $mintGreen;
+}
+.background-red {
+  background-color: $redBright;
 }

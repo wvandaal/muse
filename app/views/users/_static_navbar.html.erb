@@ -1,0 +1,32 @@
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<nav>
+				<ul class="nav pull-left">
+					<li class="menu_icon" id="home1">
+						<a href='#' rel='tooltip'> 
+						<i class="icon-home icon-large"></i>
+						</a>
+					</li>
+					<li class="menu_icon" id="favorites"><%= link_to '#' do %>
+						<i class="icon-heart icon-large"></i>
+						<% end %>
+					</li>
+					<li class="menu_icon" id="recommendations"><%= link_to '#' do %>
+						<i class="icon-star icon-large"></i>
+						<% end %>
+					</li>
+					<li class="menu_icon" id="filters"><%= link_to '#' do %>
+						<i class="icon-cog icon-large"></i>
+						<% end %>
+					</li>
+				</ul>
+				<ul class="nav pull-right">
+					<li><%= link_to "Home",	"#", id: "home2"%></li>
+					<li><%= link_to "Blogroll", '#', id: "static_blogroll" %></li>
+					<li><%= link_to "Sign out", '#', id: "signout" %></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>

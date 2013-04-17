@@ -9,14 +9,14 @@
 	</section>
 		<ul class="nav nav-pills">
 			<% if current_user.likes?(@blog) %>
-				<li class="red active">
+				<li class="blue">
 					<%= link_to(follow_blog_path(@blog), method: :post) do %>
 						Unfollow
 						<%= image_tag('error.png') %>
 					<% end %>
 			<% else %>
-				<li>
-					<%= link_to(follow_blog_path(@blog), method: :post, id: "green") do %>
+				<li class="green">
+					<%= link_to(follow_blog_path(@blog), method: :post) do %>
 						Follow
 						<%= image_tag('plus.png') %>
 					<% end %>
@@ -30,8 +30,8 @@
 			</li>
 			<li>
 				<%= link_to('#') do %>
-					<%= 'Post'.pluralize(0) %>
-					<div class="letter-icon">0<%#= <!--@blog.liked_by_count %></div>
+					<%= 'Post'.pluralize(@blog.posts.length) %>
+					<div class="letter-icon"><%= @blog.posts.length %></div>
 				<% end %>
 			</li>
 		</ul>

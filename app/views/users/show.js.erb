@@ -1,0 +1,20 @@
+$('#feed').append('<%= j render('posts') %>');
+<% if current_user.filters_enabled %>
+	<% if @songs.next_page %>
+	  $('.pagination').replaceWith('<%= j will_paginate(@songs) %>');
+	  $('.pagination').hide();
+	  $('#loading').css("display", "none")
+	  $('#btnlabel').toggle("slow")
+	<% else %>
+	  $('#append_and_paginate').remove();
+	<% end %>
+<% else %>
+	<% if @posts.next_page %>
+	  $('.pagination').replaceWith('<%= j will_paginate(@posts) %>');
+	  $('.pagination').hide();
+	  $('#loading').css("display", "none")
+	  $('#btnlabel').toggle("slow")
+	<% else %>
+	  $('#append_and_paginate').remove();
+	<% end %>
+<% end %>

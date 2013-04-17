@@ -1,0 +1,9 @@
+$('#feed').append('<%= j render('songs') %>');
+<% if @songs.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@posts) %>');
+  $('.pagination').hide();
+  $('#loading').css("display", "none")
+  $('#btnlabel').toggle("slow")
+<% else %>
+  $('#append_and_paginate').remove();
+<% end %>

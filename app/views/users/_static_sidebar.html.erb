@@ -1,0 +1,21 @@
+
+	<ul class="span3 nav nav-list" id="static_sidebar">
+		<li class="nav-header" id="name"><%=User.first.name%></li>
+		<li id="photo"><%= image_tag(User.first.img_url.gsub(/square/, "large"), alt: User.first.name, width: "100%") %></li>
+		<li class="nav-header" id="following">FOLLOWING</li>
+		<% Blog.find(:all, limit: 1).each do |site| %>
+			<li id="follow_blog">
+				<%= link_to '#' do %>
+					<span></span>
+					<%= image_tag(site.favicon_url, alt: site.name, size: "22x22") %>
+					<%= site.name %>
+				<% end %>
+			</li>
+		<% end %>
+		<li class="nav-header" id="static_addBlogs">
+			<%= link_to '#' do %>
+				<span></span>
+				<i class="icon-plus-sign-alt icon-large"></i> Add Blogs
+			<% end %>
+		</li>
+	</ul>

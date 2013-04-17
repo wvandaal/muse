@@ -11,15 +11,19 @@
 				<% if current_user %>
 				<ul class="nav pull-left">
 					<li class="menu_icon"><%= link_to current_user do %>
-						<%= image_tag('home.png') %>
+						<i class="icon-home icon-large"></i>
 						<% end %>
 					</li>
-					<li class="menu_icon"><%= link_to '#' do %>
-						<%= image_tag('heart.png') %>
+					<li class="menu_icon"><%= link_to favorites_user_path(current_user) do %>
+						<i class="icon-heart icon-large"></i>
 						<% end %>
 					</li>
-					<li class="menu_icon"><%= link_to '#' do %>
-						<%= image_tag('star.png') %>
+					<li class="menu_icon"><%= link_to recommended_user_path(current_user) do %>
+						<i class="icon-star icon-large"></i>
+						<% end %>
+					</li>
+					<li class="menu_icon"><%= link_to filters_path do %>
+						<i class="icon-cog icon-large <%= current_user.filters_enabled ? 'green' : '' %>"></i>
 						<% end %>
 					</li>
 				</ul>
@@ -30,7 +34,7 @@
 						<li><%= link_to "Blogroll", blogs_path %></li>
 						<li><%= link_to "Sign out", signout_path %></li>
 					<% else %>
-						<li><%= link_to "Blogroll", '#' %></li>
+						<li><%= link_to "Blogroll", blogs_path %></li>
 						<li><%= link_to "Sign In", "auth/facebook" %></li>
 					<% end %>
 				</ul>

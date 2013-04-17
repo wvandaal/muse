@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325090708) do
+ActiveRecord::Schema.define(:version => 20130417051030) do
 
   create_table "blogs", :force => true do |t|
     t.string   "url"
@@ -20,6 +20,39 @@ ActiveRecord::Schema.define(:version => 20130325090708) do
     t.string   "favicon_url"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "filters", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "inclusive"
+    t.string   "genre"
+    t.integer  "likes_min"
+    t.integer  "likes_max"
+    t.integer  "dislikes_min"
+    t.integer  "dislikes_max"
+    t.integer  "favorites_min"
+    t.integer  "favorites_max"
+    t.string   "artist"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.string   "name",          :default => "Untitled Filter"
+  end
+
+  create_table "links", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "song_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "blog_id"
+    t.string   "url"
+    t.string   "content"
+    t.datetime "post_date"
+    t.string   "track_urls"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "songs", :force => true do |t|
@@ -33,6 +66,26 @@ ActiveRecord::Schema.define(:version => 20130325090708) do
     t.integer  "times_favorited"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.datetime "last_posting"
+    t.integer  "like_count"
+    t.integer  "dislike_count"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|
@@ -40,9 +93,10 @@ ActiveRecord::Schema.define(:version => 20130325090708) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "img_url"
+    t.boolean  "filters_enabled",  :default => false
   end
 
 end
