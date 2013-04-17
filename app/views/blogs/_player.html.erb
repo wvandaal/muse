@@ -2,7 +2,7 @@
 	<div class="border">
 	<div class="album_art">
 		<%= link_to(song.url, class: "fap-single-track") do %>
-			<%= image_tag(song.icon_url, size: '98x98') %>
+			<%= image_tag(song.icon_url.blank? ? 'muse_logo.png' : song.icon_url, size: '98x98') %>
 			<span><%= image_tag('play-black.png', size: '60x60') %></span>
 		<% end %>
 	</div>
