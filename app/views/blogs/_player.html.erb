@@ -13,6 +13,7 @@
 			<%= raw(truncate(strip_tags(post.content), :length => 300, :omission => "... #{link_to('[more]', post.url)}"))%>
 		</span>
 	</div>
+	<% unless current_user.blank? %>
 	<ul class="nav nav-tabs nav-stacked ratings">
 		<li class=<%= current_user.likes?(song) ? "selected" : "unselected" %>>
 			<%= link_to(like_song_path(song), class: "green", method: :post) do %>
@@ -30,6 +31,7 @@
 			<% end %>
 		</li>
 	</ul>
+	<% end %>
 	<div class="stats"><%= image_tag('heart-white.png', size: '10x10') %> <%=song.times_favorited%> &#160|&#160 <%=image_tag('thumbs_up.png', size: '10x10')%> <%=song.liked_by_count%> &#160|&#160 <%=image_tag('thumbs_down.png', size: '10x10')%> <%=song.disliked_by_count%></div>
 </div>
 </div>

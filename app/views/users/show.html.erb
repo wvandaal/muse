@@ -39,30 +39,4 @@
 		</div>
 	</div>
 </div>
-<div id="tour" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="tourLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="tourLabel">Take The Tour | Your Musefeed</h3>
-  </div>
-  <div class="modal-body"> 
-  		<p>Welcome home! This is your musefeed, the dashboard where all of your favorite blogs' newest songs will be posted. Your feed is populated by the blogs that you follow, so you only listen to the music you love, brought to you by the people you trust.</p>
- 	  	<h2>The Navbar</h2>
-	  	<%= render 'static_navbar' %>
-	  	<p>Your compass in the storm, the beacon that will guide you home, the navbar is your main tool for navigating muse. <strong>Click on each icon to see what it does.</strong></p> 		
-  		<div class="well">
-  			<h2>Your Sidebar</h2>
-  			<%= render 'static_sidebar' %>
-  			<p id="sidebar_desc">The sidebar is your personalized anchor in our sea of tunes. Since we use Facebook for all of our authentication, your name and profile picture will be displayed automatically for you to see. </br></br>The sidebar also keeps track which blogs you are following currently, allowing you to quickly and easily check their individual feeds for the latest updates to their site; if you aren't following any blogs yet, simply click on the "Add Blogs" tab to check out our Blogroll.</p>
-  			<p><strong>Hover over each element of the sidebar for more information.</strong></p>
-	  	</div>
-  		<h2>Our Player</h2>
-  		<p>Check out our beautiful track player! Each player displays the track title and artist, followed by the name of the blog that posted it and an except from the original post. The player also allows you to like or dislike songs (which helps us determine which songs recommend for you) or add the track to your favorites, enabling you to save your top songs for later. </br><strong>Hover over each element of the player to see what it is.</strong></p>
-  		<%= render 'static_player', song: Post.first.songs.first, post: Post.first, blog: Blog.find(Post.first.blog_id) %>
-  	</br>
-  </div>
-  <div class="modal-footer">
-  	<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Thanks for the help!</button>
-  	Other questions?
-  	<%= link_to("Contact Us", contact_path, class: "btn") %>
-  </div>
-</div>
+<%= render 'help' %>

@@ -7,23 +7,29 @@
 		</h1>
 		<h3>WEBSITE<br> <%= link_to(@blog.url, @blog.url) %></h3>
 	</section>
-		<ul class="nav nav-pills">
-			<% if current_user.likes?(@blog) %>
-				<li class="blue">
-					<%= link_to(follow_blog_path(@blog), method: :post) do %>
-						Unfollow
-						<%= image_tag('error.png') %>
-					<% end %>
+		<ul class="nav nav-pills" id="blog_nav">
+			<% if current_user %>
+				<% if current_user.likes?(@blog) %>
+					<li class="blue">
+						<%= link_to(follow_blog_path(@blog), method: :post) do %>
+							Unfollow
+							<%= image_tag('error.png') %>
+						<% end %>
+				<% else %>
+					<li class="green">
+						<%= link_to(follow_blog_path(@blog), method: :post) do %>
+							Follow
+							<%= image_tag('plus.png') %>
+						<% end %>
+				<% end %>
+				</li>
 			<% else %>
-				<li class="green">
-					<%= link_to(follow_blog_path(@blog), method: :post) do %>
-						Follow
-						<%= image_tag('plus.png') %>
-					<% end %>
+				<li class="blue">
+					<%= link_to('Sign In To Follow This Blog', "#{root_path}auth/facebook") %>
+				</li>
 			<% end %>
-			</li>
 			<li>	
-				<%= link_to('#') do %>
+				<%= link_to('#', id: "followers") do %>
 					<%= 'Follower'.pluralize(@blog.liked_by_count) %>
 					<div class="letter-icon"><%= @blog.liked_by_count %></div>
 				<% end %>
@@ -35,5 +41,18 @@
 				<% end %>
 			</li>
 		</ul>
+		<div id="followers-list">
+			<% @blog.liked_by.in_groups_of(4).each do |group| %>
+				<ul class="thumbnails">
+					<% group.each do |item| %>
+						<% if item %>
+							<li class="span3 thumb">
+								<%= image_tag(item.img_url, class: "profile_thumb") %>
+							</li>
+						<% end %>
+					<% end %>
+				</ul>
+			<% end %>
+		</div>
 	</div>
 </aside>

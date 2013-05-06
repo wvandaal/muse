@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @songs = @user.filtered_songs.paginate(:page => params[:page], :per_page => 20)
   	ids = @user.liked_blogs.pluck(:id)
-  	@posts = Post.where(blog_id: ids).order("post_date DESC").paginate(:page => params[:page], :per_page => 20)
+  	@posts = Post.where(blog_id: ids).order("post_date DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   def favorites

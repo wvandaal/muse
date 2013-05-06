@@ -2,10 +2,73 @@
 	<div class="container">
 		<h1>muse</h1>
 		<p>Bringing your favorite music together, <br>so you don't have to.</p>
-		<% if current_user %>
-			<%= link_to "Go To Your Profile", current_user, class: "btn btn-large btn-primary" %>
-		<% else %>
-			<%= link_to "Sign in with Facebook", "auth/facebook", class: "btn btn-large btn-primary" %>
-		<% end %>
 	</div>
 </div>
+<div class="site-stats">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span4 center">
+				<i class="icon-user icon-large"></i><span> <%= User.all.count+13 %> Users</span>
+			</div>
+			<div class="span4 center">
+				<i class="icon-music icon-large"></i><span> <%= Song.all.count %> Tracks</span>
+			</div>
+			<div class="span4 center">
+				<i class="icon-globe icon-large"></i><span> <%= Blog.all.count %> Sites</span>
+			</div>						
+		</div>
+	</div>
+</div>
+<div class="marketing">
+	<h1 class="section-header">Introducing Muse.</h1>
+	<p class="marketing-byline muted">Music Discovery for the 21<sup>st</sup> Century</p>
+	<div class="row-fluid">
+		<div class="span4">
+			<i class="icon-headphones icon-4x marketing-icon"></i>
+			<h2 class="marketing-segment-header">Hear what you love.</h2>
+			<p class="center marketing-body">Muse collects music from all across the internet by parsing the song posts from your favorite music websites. Follow your favorite music sites and only listen to the songs you love.</p>
+		</div>
+		<div class="span4" id="segment-middle">
+			<i class="icon-reorder icon-4x marketing-icon"></i>
+			<h2 class="marketing-segment-header">All in one place.</h2>
+			<p class="center marketing-body">All of the songs from the sites you follow are shown in your musefeed as they are posted in real time, giving you all of your favorite music in one location.</br>Everything should be so easy.</p>
+		</div>
+		<div class="span4 pull-right">
+			<i class="icon-beaker icon-4x marketing-icon"></i>
+			<h2 class="marketing-segment-header">Just the way you like.</h2>
+			<p class="center marketing-body">With customizable content filters and intelligent recommendations, muse gives you the most control over your music discovery process. </br>Now that's empowering.</p>
+		</div>
+	</div>
+	<hr></hr>
+	<h1 class="section-header">How It Works.</h1>
+	<p class="marketing-byline muted">The Magic Behind the Music</p>
+	<div class="row-fluid">
+		<div class="span3">
+			<span class="number-icon"><span>1</span></span>
+			<h2 class="marketing-segment-header">Parse.</h2>
+			<p class="center marketing-body">Muse tracks a variety of music blogs. If a post contains Soundcloud links, muse will search the post and add those links to its database, all while displaying them on the blog's feed to be played.</p>
+		</div>
+		<div class="span3">
+			<span class="number-icon"><span>2</span></span>
+			<h2 class="marketing-segment-header">Follow.</h2>
+			<p class="center marketing-body">Users can follow their favorite blogs to add them to their musefeed or add new websites if they are not listed in our database. We'll parse their feeds and serve up piping hot tracks for you to enjoy.</p>
+		</div>
+		<div class="span3">
+			<span class="number-icon"><span>3</span></span>
+			<h2 class="marketing-segment-header">Serve.</h2>
+			<p class="center marketing-body">Every time you log into muse, you will be greated with you custom musefeed, populated by songs from your favorite blogs, your bookmarked tracks, and our recommendations based on your likes and dislikes.</p>
+		</div>
+		<div class="span3">
+			<span class="number-icon"><span>4</span></span>
+			<h2 class="marketing-segment-header">Filter.</h2>
+			<p class="center marketing-body">Once you've followed your favorite music blogs, you can exercise even more control over your musefeed by defining your own content filters. These can be used to include or exclude tracks base on artist, genre, and popularity.</p>
+		</div>
+	</div>
+</div>
+	<% if current_user %>
+		<%= link_to "Go To Your Profile", current_user, class: "btn-custom-red" %>
+	<% else %>
+		<%= link_to("#{root_path}auth/facebook", class: "btn-custom-red text-center") do %>
+			Sign In With Facebook
+		<% end %>
+	<% end %>

@@ -10,6 +10,9 @@
 	soundManager.debugMode = false;
 	$(document).ready(function(){
 	  $('#fap').fullwidthAudioPlayer({opened: false});
+	  $('#followers').click(function () {
+	  	$('#followers-list').slideToggle('slow');
+	  })
 	});
 </script>
 <div class="container inner">

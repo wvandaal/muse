@@ -9,8 +9,8 @@ class FiltersController < ApplicationController
   end
 
   def create
-    @filter = current_user.filters.build(params[:filters])
-    if @filter.save
+    @filter = current_user.filters.build(params[:filter])
+    if @filter.save!
       flash[:success] = "Nice! You've got yourself a new filter."
       redirect_to filters_path
     else
