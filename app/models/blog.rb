@@ -14,17 +14,17 @@ class Blog < ActiveRecord::Base
 
   has_many :posts, foreign_key: "blog_id", dependent: :destroy
 
-  	def format_urls
-  		uri = Addressable::URI.parse(self.url)
-  		self.favicon_url = "http://www.google.com/s2/favicons?domain=#{uri.host}"
-  		return self.url = "#{uri.scheme}://#{uri.host}"
-  	end
+	def format_urls
+		uri = Addressable::URI.parse(self.url)
+		self.favicon_url = "http://www.google.com/s2/favicons?domain=#{uri.host}"
+		return self.url = "#{uri.scheme}://#{uri.host}"
+	end
 
-  	def has_working_url
-  		url = URI.parse(self.format_urls)
- 	  	Net::HTTP.start(url.host, url.port) do |http|
-    		return http.head(url.request_uri).code == "200"
-  		end
+	def has_working_url
+		url = URI.parse(self.format_urls)
+	  	Net::HTTP.start(url.host, url.port) do |http|
+  		return http.head(url.request_uri).code == "200"
+		end
 	end
 
   def self.update_all
