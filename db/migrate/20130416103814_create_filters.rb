@@ -1,7 +1,5 @@
 class CreateFilters < ActiveRecord::Migration
   def change
-    drop_table :filters
-
     create_table :filters do |t|
       t.integer :user_id
       t.boolean :include
