@@ -64,4 +64,7 @@ Muse::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Sets up RedisTogo for Heroku deployment
+  ENV["REDISTOGO_URL"] = "redis://redistogo:cdad24f17dfea1c0fe8b4d7b9a95b1cf@albacore.redistogo.com:9562/"
 end
