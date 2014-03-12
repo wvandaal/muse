@@ -4,6 +4,8 @@ timeout 15
 preload_app true
 
 before_fork do |server, worker|
+  @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2 -q recommendable")
+
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid
@@ -20,9 +22,4 @@ after_fork do |server, worker|
 
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.establish_connection
-
-
-  Sidekiq.configure_client do |config|
-    config.redis = { url: ENV["OPENREDIS_URL"] }
-  end unless ENV['OPENREDIS_URL'].blank?
 end

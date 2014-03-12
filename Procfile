@@ -1,2 +1,1 @@
-web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
-worker: bundle exec sidekiq -e production -q recommendable
+web: bundle exec unicorn -p $PORT -E $RACK_ENV -c ./config/unicorn.rb
