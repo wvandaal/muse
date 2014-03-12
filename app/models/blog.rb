@@ -57,8 +57,8 @@ class Blog < ActiveRecord::Base
 
   def update
     feed = Feedzirra::Feed.fetch_and_parse(self.feed)
-    self.name= feed.title
-    self.url= feed.url
+    self.name = feed.title
+    self.url = feed.url
     format_urls
     add_entries(feed.entries, self.id)
   end
@@ -91,9 +91,9 @@ class Blog < ActiveRecord::Base
       unless Post.exists?(:url => entry.url)
         post = Post.new(url: entry.url, blog_id: blog_id, post_date: entry.published)
         if entry.content.blank? && !entry.summary.blank?
-          post.content = entry.summary
+          post.content = truncate(entry.summary, length: 255)
         else
-          post.content = entry.content
+          post.content = truncate(entry.content, length: 255)
         end
         track_ids = parse_post(entry.url, entry.published)
         puts track_ids
