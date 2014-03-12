@@ -96,6 +96,7 @@ class Blog < ActiveRecord::Base
           post.content = entry.content
         end
         track_ids = parse_post(entry.url, entry.published)
+        puts track_ids
         post.track_urls = track_ids
         unless track_ids.blank?
           post.save!
@@ -125,6 +126,8 @@ class Blog < ActiveRecord::Base
     iframes = page.iframes_with(src: %r{soundcloud})
 
     track_urls = (links + iframes).map {|e| e.href.scan(/\/tracks\/\d+|\/playlists\/\d+/)}.flatten
+
+    puts track_urls
 
     track_urls.each do |url|
       begin
