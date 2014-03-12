@@ -48,7 +48,8 @@ group :test do
 end
 
 group :production do
-	gem 'pg', '0.12.2'
+	gem 'pg'
+  gem 'rails_12factor'
 end
 
 # To use ActiveModel has_secure_password
@@ -65,3 +66,5 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+ruby '1.9.3'

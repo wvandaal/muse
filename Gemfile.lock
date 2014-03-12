@@ -158,6 +158,11 @@ GEM
       activesupport (= 3.2.9)
       bundler (~> 1.0)
       railties (= 3.2.9)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.9)
       actionpack (= 3.2.9)
       activesupport (= 3.2.9)
@@ -257,8 +262,9 @@ DEPENDENCIES
   mechanize
   nokogiri
   omniauth-facebook
-  pg (= 0.12.2)
+  pg
   rails (= 3.2.9)
+  rails_12factor
   recommendable (= 2.1.0.1)
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
