@@ -7,6 +7,9 @@ Recommendable.configure do |config|
   # config.redis = Redis.new(:host => 'localhost', :port => 6379, :db => 0)
   # config.redis = REDIS
 
+  uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379")
+  config.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+
   # A prefix for all keys Recommendable uses.
   #
   # Default: recommendable
