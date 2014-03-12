@@ -91,9 +91,9 @@ class Blog < ActiveRecord::Base
       unless Post.exists?(:url => entry.url)
         post = Post.new(url: entry.url, blog_id: blog_id, post_date: entry.published)
         if entry.content.blank? && !entry.summary.blank?
-          post.content = truncate(entry.summary, length: 255)
+          post.content = entry.summary[0...255]
         else
-          post.content = truncate(entry.content, length: 255)
+          post.content = entry.content[0...255]
         end
         track_ids = parse_post(entry.url, entry.published)
         puts track_ids
