@@ -3,6 +3,7 @@ class Blog < ActiveRecord::Base
   require 'net/http'
   require 'addressable/uri'
   require 'soundcloud'
+  require 'sanitize'
 
   attr_accessible :url
   attr_protected :favicon_url, :feed, :name
@@ -91,9 +92,9 @@ class Blog < ActiveRecord::Base
       unless Post.exists?(:url => entry.url)
         post = Post.new(url: entry.url, blog_id: blog_id, post_date: entry.published)
         if entry.content.blank? && !entry.summary.blank?
-          post.content = entry.summary[0...255]
+          post.content = Sanitize.clean(entry.summary)[0...255]
         else
-          post.content = entry.content[0...255]
+          post.content = Sanitize.clean(entry.content)[0...255]
         end
         track_ids = parse_post(entry.url, entry.published)
         puts track_ids

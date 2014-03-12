@@ -1,4 +1,5 @@
 class Song < ActiveRecord::Base
+  attr_accessible :times_favorited
   has_many :links
   has_many :posts, through: :links, uniq: true
 

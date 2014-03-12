@@ -196,6 +196,8 @@ GEM
       railties (>= 3.0)
       rspec (~> 2.11.0)
     rubyzip (0.9.9)
+    sanitize (2.1.0)
+      nokogiri (>= 1.4.4)
     sass (3.2.5)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -275,6 +277,7 @@ DEPENDENCIES
   recommendable (= 2.1.0.1)
   redis
   rspec-rails (= 2.11.0)
+  sanitize
   sass-rails (= 3.2.5)
   sidekiq (= 2.8.0)
   sidekiq-middleware (= 0.0.6)

@@ -15,6 +15,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'mechanize'
 gem 'addressable'
 gem 'redis'
+gem 'sanitize'
 
 
 # Bundle edge Rails instead:
