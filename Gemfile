@@ -14,6 +14,7 @@ gem 'will_paginate', '3.0.4'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'mechanize'
 gem 'addressable'
+gem 'redis'
 
 
 # Bundle edge Rails instead:

@@ -267,6 +267,7 @@ DEPENDENCIES
   rails (= 3.2.9)
   rails_12factor
   recommendable (= 2.1.0.1)
+  redis
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   sidekiq (= 2.8.0)
