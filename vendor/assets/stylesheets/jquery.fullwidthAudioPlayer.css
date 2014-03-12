@@ -1,5 +1,5 @@
 /*
-* Fullwidth Audio Player V1.3.1
+* Fullwidth Audio Player V1.5
 * Author: Rafael Dery
 * Copyright 2011
 *
@@ -25,10 +25,17 @@
 	position: fixed;
 	left: 0;
 	z-index: 100000;
-	border-top: 1px solid;
-	border-bottom: 1px solid;
 	font-size: 10px;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+.fap-fullwidth {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+.fap-boxed #fap-main {
+	border: 1px solid;
 }
 
 #fap-wrapper-switcher {
@@ -130,11 +137,14 @@
 #fap-social-links a {
 	font-size: 10px;
 	margin-right: 10px;
-	text-decoration: underline;
+	float: left;
+	display: block;
 }
 
-#fap-social-links a:hover {
-	text-decoration: none;	
+#fap-social-links a.fap-soundcloud-link {
+	background: url(fwap/black/sc_logo_dark.png) no-repeat;
+	width: 78px;
+	height: 12px;
 }
 
 
@@ -286,39 +296,35 @@
 	background-position: 5px 7px;
 }
 
-#fap-playlist-wrapper {
-	padding-right: 15px;
-	padding-bottom: 15px;
-}
-
 #fap-playlist {
 	width: 100%;
-	height: 100%;	
+	height: 100%;
 }
 
-#fap-playlist-wrapper li {
+#fap-playlist li {
 	line-height: 20px;
+	margin-right: 10px;
 }
 
-#fap-playlist-wrapper li img, #fap-playlist-wrapper li .fap-cover-replace-small {
+#fap-playlist li img, #fap-playlist li .fap-cover-replace-small {
 	text-align: center;
 	float: left;
 	width: 20px;
 	height: 20px;
 }
 
-#fap-playlist-wrapper li > span {
+#fap-playlist li > span {
 	float: left;
 	line-height: 20px;
 	margin-left: 10px;
 	cursor: pointer;
 }
 
-#fap-playlist-wrapper li span:hover {
+#fap-playlist li span:hover {
 	text-decoration: underline;	
 }
 
-#fap-playlist-wrapper li .fap-remove-track {
+#fap-playlist li .fap-remove-track {
 	font-size: 18px;
 	line-height: 22px;
 	float: right;
@@ -346,53 +352,6 @@
   top: -200px;
   left: -200px;
 }
-
-/* Antiscroll */
-
-.antiscroll-wrap {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-}
-
-.antiscroll-wrap .box, .antiscroll-wrap .box .antiscroll-inner {
-	width: 960px;
-}
-
-.antiscroll-scrollbar {
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
-  position: absolute;
-  opacity: 0;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  -webkit-transition: linear 300ms opacity;
-  -moz-transition: linear 300ms opacity;
-  -o-transition: linear 300ms opacity;
-}
-
-.antiscroll-scrollbar-shown {
-  opacity: 1;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-}
-
-.antiscroll-scrollbar-vertical {
-  width: 7px;
-  margin-top: 2px;
-  right: 2px;
-  top: 0;
-}
-
-.antiscroll-inner {
-  overflow-y: scroll;
-}
-
-.antiscroll-inner::-webkit-scrollbar, .antiscroll-inner::scrollbar {
-  width: 0;
-  height: 0;
-}
-
-
 
 /* Helper */
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }

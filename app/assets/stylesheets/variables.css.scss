@@ -1,0 +1,14 @@
+/* mixins, variables, etc. definitions */
+
+$grayMediumLight: #eaeaea;
+$blueGray: #5D8AA8;
+$blueLight: #0088cc;
+$mintGreen: #00c778;
+$red: #fd5b5b;
+$redBright: #fb4e4e;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}

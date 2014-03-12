@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  respond_to :html, :json
+
   def index
   	@blogs = Blog.order("name").each_slice(3).to_a
   	@blog = Blog.new
@@ -6,11 +8,8 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(params[:blog])
-    if @blog.save
-      redirect_to @blog
-    else
-      render 'index'
-    end
+    @blog.save
+    respond_with @blog
   end
 
   def show

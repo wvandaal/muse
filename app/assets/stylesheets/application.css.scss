@@ -1,21 +1,24 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require font-awesome
+ *= require_tree ../../../vendor/assets/stylesheets
+ */
+
+@import "bourbon";
 @import "bootstrap";
 @import "font-awesome";
 
-/* mixins, variables, etc. definitions */
-
-$grayMediumLight: #eaeaea;
-$blueGray: #5D8AA8;
-$blueLight: #0088cc;
-$mintGreen: #00c778;
-$red: #fd5b5b;
-$redBright: #fb4e4e;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
+@import "variables";
+@import "blogs";
 
 /* universal */
 
@@ -24,12 +27,12 @@ hr {
 }
 
 html {
-	overflow-y: scroll;
+  overflow-y: scroll;
   height: 100%;
 }
 
 body {
-	height: 100%;
+  height: 100%;
 }
 
 #wrap {
@@ -54,22 +57,22 @@ body {
 
 
 section {
-	overflow: auto
+  overflow: auto
 }
 
 textarea {
-	resize: vertical;
+  resize: vertical;
 }
 
 .inner {
   padding-top: 15px;
 }
 
-.center {	/* associates 'center' class with the property 'text-align: center'; any element (such as a div) with the class 'center' will be associated with these properties */
-	text-align: center;
-	h1 {	/* Sass CSS allows for nesting of elements (i.e. in regular CSS .center h1 {} would have its own closure). In this way, h1 automatically inherits the .center content */
-		margin-bottom: 10px;
-	}
+.center { /* associates 'center' class with the property 'text-align: center'; any element (such as a div) with the class 'center' will be associated with these properties */
+  text-align: center;
+  h1 {  /* Sass CSS allows for nesting of elements (i.e. in regular CSS .center h1 {} would have its own closure). In this way, h1 automatically inherits the .center content */
+    margin-bottom: 10px;
+  }
 }
 
 /* Home */
@@ -319,15 +322,15 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
-	line-height: 1;
+  line-height: 1;
 }
 
 h1.banner {
-	font-size: 9em;
-	letter-spacing: 15px;
-	margin-top: 30px;
+  font-size: 9em;
+  letter-spacing: 15px;
+  margin-top: 30px;
   padding: 20px;
-	text-align: left;
+  text-align: left;
   background-color: $grayMediumLight;
   color: white;
   font-variant: small-caps;
@@ -336,35 +339,35 @@ h1.banner {
 }
 
 h2 {
-	font-size: 1.7em;
-	letter-spacing: -1px;
-	margin-bottom: 30px;
-	text-align: center;
-	font-weight: normal;
-	color: $grayLight;
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
 }
 
 p {
-	font-size: 1.1em;
-	line-height: 1.7em;
+  font-size: 1.1em;
+  line-height: 1.7em;
 }
 
 
 /* header */
 
 #logo {
-	float: left;
-	margin-right: 10px;
-	font-size: 2.1em;
-	color: $gray;
-	letter-spacing: -4px;
-	padding-top: 4px;
-	font-weight: bold;
-	line-height: 1;
-	&:hover {	/* this is another example of nesting in SCSS. In order to reference the parent element (#logo), we must use the character & before the 'hover' attribute */
-		color: $redBright;
-		text-decoration: none;
-	}
+  float: left;
+  margin-right: 10px;
+  font-size: 2.1em;
+  color: $gray;
+  letter-spacing: -4px;
+  padding-top: 4px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover { /* this is another example of nesting in SCSS. In order to reference the parent element (#logo), we must use the character & before the 'hover' attribute */
+    color: $redBright;
+    text-decoration: none;
+  }
 }
 
 .menu_icon {
@@ -378,25 +381,25 @@ p {
 footer {
   margin: 1% 0;
   padding-top: 1%;
-	border-top: 1px solid $grayMediumLight;
-	color: $grayLight;
-	a{
-		color: $gray;
-		&:hover {
-			color: $grayDarker;
-		}
-	}
-	small {
-		float: left;
-	}
-	ul {
-		float: right;
-		list-style: none;
-		li {
-			float: left;
-			margin-left: 10px;
-		}
-	}
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a{
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
 }
 
 /* forms */

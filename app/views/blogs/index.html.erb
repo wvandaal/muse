@@ -1,4 +1,5 @@
 <% provide(:title, 'Blogroll') %>
+<%= render :partial => "layouts/errors" %>
 <h1 class="banner"><div class="container">Blogroll</div></h1>
 <div class="container" id="inner">
 	<div class="accordion" id="blogroll">
@@ -29,7 +30,6 @@
 						<% array.each do |site| %>
 							<li>
 								<%= link_to site do %>
-									<span></span>
 									<%= image_tag(site.favicon_url, alt: @blog.name, size: "22x22") %>
 									<%= site.name %>
 								<% end %>

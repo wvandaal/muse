@@ -12,10 +12,10 @@ class FavoriteWorker
 		@user = User.find(user_id)
 		if @user.bookmarks?(@song)
 			@user.unbookmark(@song)
-			@song.times_favorited= (@song.times_favorited - 1)
+			@song.times_favorited = (@song.times_favorited - 1)
 		else
 			@user.bookmark(@song)
-			@song.times_favorited= (@song.times_favorited + 1)
+			@song.times_favorited = (@song.times_favorited + 1)
 		end
 	end
 end

@@ -1,3 +1,32 @@
 // Place all the styles related to the Blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Errors */
+@include keyframes(fadeIn) {
+  from {
+    @include transform(scale(0));
+  }
+  to {
+    @include transform(scale(1));
+  }
+}
+
+#errors {
+  position: fixed;
+  width: 20%;
+  top: 5em;
+  right: 1em;
+  z-index: 10;
+  list-style: none;
+  > li {
+    background: rgba(255,255,255,0.9);
+    color: black;
+    padding: 0.5em 2em;
+    margin-bottom: 0.5em;
+    @include animation(1s fadeIn);
+    border: 2px solid $red;
+    border-radius: 0.25em;
+  }
+}

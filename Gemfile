@@ -12,6 +12,7 @@ gem 'soundcloud', '0.3.1'
 gem 'whenever', require: false
 gem 'will_paginate', '3.0.4'
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'mechanize'
 
 
 # Bundle edge Rails instead:
@@ -32,6 +33,7 @@ group :assets do
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'font-awesome-rails', '3.0.2.0'
+  gem 'bourbon'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

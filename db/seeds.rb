@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+urls = [
+  "http://thekollection.com/",
+  "http://cavemansound.com",
+  "http://freshnewtracks.com",
+  "http://allthingsgomusic.com/"
+]
+
+urls.each {|url| Blog.create({url: url})}
+Blog.update_all

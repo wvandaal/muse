@@ -1,7 +1,7 @@
 <div class="player span12">
 	<div class="border">
 	<div class="album_art">
-		<%= link_to(song.url, class: "fap-single-track") do %>
+		<%= link_to(song.url, class: "fap-single-track", data: {autoenqueue: "yes"}) do %>
 			<%= image_tag(song.icon_url.blank? ? 'muse_logo.png' : song.icon_url, size: '98x98') %>
 			<span><%= image_tag('play-black.png', size: '60x60') %></span>
 		<% end %>
@@ -30,21 +30,22 @@
 	</div>
 	<ul class="nav nav-tabs nav-stacked ratings">
 		<li class=<%= current_user.likes?(song) ? "selected" : "unselected" %>>
-			<%= link_to(like_song_path(song), class: "green", method: :post) do %>
+			<%= link_to(like_song_path(song), class: "green like", method: :post) do %>
 				<i class="icon-thumbs-up icon-large"></i>
 			<% end %>
 		</li>
 		<li class=<%= current_user.bookmarks?(song) ? "selected" : "unselected" %>>
-			<%= link_to(favorite_song_path(song), class: "red", method: :post) do %>
+			<%= link_to(favorite_song_path(song), class: "red favorite", method: :post) do %>
 				<i class="icon-heart icon-large"></i>
 			<% end %>
 		</li>
 		<li class=<%= current_user.dislikes?(song) ? "selected" : "unselected" %>>
-			<%= link_to(dislike_song_path(song), class: "blue", method: :post) do %>
+			<%= link_to(dislike_song_path(song), class: "blue dislike", method: :post) do %>
 				<i class="icon-thumbs-down icon-large"></i>
 			<% end %>
 		</li>
 	</ul>
-	<div class="stats"><%= image_tag('heart-white.png', size: '10x10') %> <%=song.times_favorited%> &#160|&#160 <%=image_tag('thumbs_up.png', size: '10x10')%> <%=song.liked_by_count%> &#160|&#160 <%=image_tag('thumbs_down.png', size: '10x10')%> <%=song.disliked_by_count%></div>
+	<div class="stats"><%= image_tag('heart-white.png', size: '10x10') %> <%=song.times_favorited%> &#160|&#160 <%=image_tag('thumbs_up.png', size: '10x10')%> <%=song.liked_by_count%> &#160|&#160 <%=image_tag('thumbs_down.png', size: '10x10')%> <%=song.disliked_by_count%>
+	</div>
 </div>
 </div>
