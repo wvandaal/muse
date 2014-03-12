@@ -13,6 +13,7 @@ gem 'whenever', require: false
 gem 'will_paginate', '3.0.4'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'mechanize'
+gem 'addressable'
 
 
 # Bundle edge Rails instead:

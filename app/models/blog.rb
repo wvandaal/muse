@@ -1,7 +1,7 @@
 class Blog < ActiveRecord::Base
   require 'open-uri'
   require 'net/http'
-  require "addressable/uri"
+  require 'addressable/uri'
   require 'soundcloud'
 
   attr_accessible :url
