@@ -16,6 +16,8 @@ class SongsController < ApplicationController
   def favorite
   	session[:return_to] = request.referer
   	@song = Song.find(params[:id])
+    @song.times_favorited += current_user.bookmarks?(@song) ? -1 : 1
+    @song.save
   	FavoriteWorker.perform_async(current_user.id, @song.id)
   	redirect_to session.delete(:return_to)
   end
