@@ -1,4 +1,4 @@
-require "/Users/wcvandal/Documents/Computer Science/Senior Project/muse/config/environment.rb"
+require "/Users/wcvandal/Documents/ComputerScience/Senior Project/muse/config/environment.rb"
 
 client = Soundcloud.new(client_id: "880d97d3bef306f045f77502727fefc2")
 tracks = client.get('/tracks', :limit => 10, :order => 'hotness')

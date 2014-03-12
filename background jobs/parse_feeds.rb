@@ -1,4 +1,4 @@
-require "/Users/wcvandal/Documents/Computer Science/Senior Project/muse/config/environment.rb"
+require "/Users/wcvandal/Documents/ComputerScience/Senior Project/muse/config/environment.rb"
 
 def add_entries(entries, blog_id)
 	entries.each do |entry|
