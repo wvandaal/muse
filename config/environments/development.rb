@@ -34,4 +34,7 @@ Muse::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Sets up RedisTogo for Heroku deployment
+  ENV["REDISTOGO_URL"] = "redis://redistogo:cdad24f17dfea1c0fe8b4d7b9a95b1cf@albacore.redistogo.com:9562/"
 end
