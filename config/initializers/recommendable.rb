@@ -5,10 +5,10 @@ Recommendable.configure do |config|
   #
   # Default: localhost:6379/0
   # config.redis = Redis.new(:host => 'localhost', :port => 6379, :db => 0)
-  # config.redis = REDIS
 
+  # Configures Redis for Heroku using RedisToGo
   uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379")
-  config.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+  config.redis = REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
   # A prefix for all keys Recommendable uses.
   #
