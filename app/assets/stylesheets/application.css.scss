@@ -762,6 +762,34 @@ aside {
   font-size: .7em;
   width: 20%;
   margin-left: 80%;
+  > span.likes, > span.favorites, > span.dislikes {
+    padding: 0 1em;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      position: relative;
+      top: 2px;
+      margin-right: 3px;
+    }
+  }
+  > span.likes {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    &:before { 
+      background: url("thumbs_up.png") center center no-repeat; 
+      background-size: 12px;
+    }
+  }
+  > span.dislikes:before { 
+    background: url("thumbs_down.png") center center no-repeat; 
+    background-size: 12px;
+  }
+  > span.favorites:before { 
+    background: url("heart-white.png") center center no-repeat; 
+    background-size: 12px;
+  }
 }
 
 .play {
@@ -841,16 +869,16 @@ aside {
   > li a { border: none; }
   > .selected { 
     > a > i { visibility: visible; }
-    > .green { color: $mintGreen; }
-    > .red { color: $redBright; }
-    > .blue {color: $blueLight; }
+    > .like { color: $mintGreen; }
+    > .favorite { color: $redBright; }
+    > .dislike {color: $blueLight; }
   }
   > .unselected {
     > a { color: $gray; }
     &:hover {
-      > .green { color: $mintGreen; }
-      > .red { color: $redBright; }
-      > .blue { color: $blueLight; }
+      > .like { color: $mintGreen; }
+      > .favorite { color: $redBright; }
+      > .dislike { color: $blueLight; }
     }
   }
 }

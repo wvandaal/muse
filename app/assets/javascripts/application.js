@@ -21,13 +21,41 @@ $(document).ready(function() {
   // Delegates posting for likes, favorites, and dislikes
   $('#feed').on('click', 'a.favorite, a.like, a.dislike', function(e) {
     e.preventDefault();
-    var link  = e.currentTarget,
-        url   = link.pathname;
+    var link      = e.currentTarget,
+        url       = link.pathname,
+        $player   = $(link).parents('.player'),
+        linkClass = link.classList[0],
+        $metric   = $player.find("."+linkClass+"s"),    // a.like => span.likes
+        i = parseInt($metric.html());
+
 
     $.post(url, function () {
+      // Toggle selection status of rating
       ['selected', 'unselected'].forEach(function(c) {
         link.parentNode.classList.toggle(c);
       });
+
+
+
+
+      // De/Increment rating
+      if (link.parentNode.classList.contains("selected")) {
+        $metric.html(++i);
+
+        // If like/dislike is clicked and the opposite is selected, unselect it and
+        // decrement the appropriate stat
+        if (linkClass !== "favorite") {
+          var oppClass = linkClass === "like" ? ".dislike" : ".like",
+              j        = parseInt($player.find(oppClass+"s").first().html());
+
+          $player.find(oppClass).first().parent().removeClass("selected");
+          $player.find(oppClass).first().parent().addClass("unselected");
+
+          $player.find(oppClass+"s").html(--j);
+        } 
+      } else {
+        $metric.html(--i);
+      }
     });
     
     return false;
