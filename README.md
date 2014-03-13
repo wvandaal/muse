@@ -1,4 +1,4 @@
-== Welcome to Muse!
+# Welcome to Muse!
 
 Muse is an adaptive music blog aggregator designed to help you find new music 
 based on what you already love. Users can create their account and begin the
