@@ -24,4 +24,4 @@ production:
   database: muse_production
   pool: 5
   username: muse
-  password: AACMT567
+  password: ******
